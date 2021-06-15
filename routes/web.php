@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('subscriptions/store', [SubscriptionController::class, 'store'])->name('subscriptions.store');
 Route::get('subscriptions/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.checkout');
 Route::get('subscriptions/premium', [SubscriptionController::class, 'index'])->name('subscriptions.premium');
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
