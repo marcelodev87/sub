@@ -14,6 +14,9 @@ class SubscriptionController extends Controller
 
     public function index()
     {
+        if (auth()->user()->subscribed('default')){
+            redirect()->route('subscriptions.premium');
+        }
         return view('subscriptions.index', [
             'intent' => auth()->user()->createSetupIntent()
         ]);
