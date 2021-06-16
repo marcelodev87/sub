@@ -4,6 +4,23 @@
             {{ __('Minha Assinatura') }}
         </h2>
     </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                   @if (Auth::user()->subscription('default'))
+                        @if (Auth::user()->subscription('default')->onGracePeriod())
+                            <a href="{{ route('subscriptions.resume') }}">Reativar Assinatura</a>
+                        @else
+                            <a href="{{ route('subscriptions.cancel') }}">Cancelar Assinatura</a>
+                        @endif
+                    @else
+                        Não é Assinante
+                   @endif
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

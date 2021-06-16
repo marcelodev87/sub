@@ -34,6 +34,7 @@ class SubscriptionController extends Controller
         return view('subscriptions.account', compact('invoices'));
     }
 
+    //======================= DOWNLOAD DA FATURA
     public function downloadInvoice($invoiceId)
     {
         return Auth::user()->downloadInvoice($invoiceId, [
@@ -49,5 +50,19 @@ class SubscriptionController extends Controller
             ->create($request->token);
 
         return redirect()->route('subscriptions.premium');
+    }
+
+    //======================= CANCELAMENTO
+    public function cancel()
+    {
+        auth()->user()->subscription('default')->cancel();
+        return redirect()->route('subscriptions.account');
+    }
+
+    //======================= REATIVAÇÃO
+    public function resume()
+    {
+        auth()->user()->subscription('default')->resume();
+        return redirect()->route('subscriptions.account');
     }
 }

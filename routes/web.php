@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('subscriptions/resume', [SubscriptionController::class, 'resume'])->name('subscriptions.resume');
+Route::get('subscriptions/cancel', [SubscriptionController::class, 'cancel'])->name('subscriptions.cancel');
 Route::get('subscriptions/invoice/{invoice}', [SubscriptionController::class, 'downloadInvoice'])->name('subscriptions.invoice.download');
 Route::get('subscriptions/account', [SubscriptionController::class, 'account'])->name('subscriptions.account');
 Route::post('subscriptions/store', [SubscriptionController::class, 'store'])->name('subscriptions.store');
